@@ -24,19 +24,19 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
     // final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      // appBar: AppBar(
-      //   title: Text('Login'),
-      //   leading: Icon(Icons.home),
-      //   centerTitle: true,
-      //   backgroundColor: Colors.green[500],
-      //   shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      //   actions: [
-      //     Icon(Icons.list_sharp),
-      //     SizedBox(
-      //       width: 25,
-      //     )
-      //   ],
-      // ),
+      appBar: AppBar(
+        title: Text('Login'),
+        leading: Icon(Icons.home),
+        centerTitle: true,
+        backgroundColor: Colors.green[500],
+        shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        actions: [
+          Icon(Icons.list_sharp),
+          SizedBox(
+            width: 25,
+          )
+        ],
+      ),
       body: BlocListener(
         bloc: logincubit,
         listener: (context, state) {
