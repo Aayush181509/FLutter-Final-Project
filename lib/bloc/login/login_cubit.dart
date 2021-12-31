@@ -9,6 +9,7 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
   signInWithGoogle() async {
+    print('Hi');
     emit(LoginLoading(message: "Loading"));
     try {
       final googleSignIn = await GoogleSignIn().signOut();
@@ -29,10 +30,18 @@ class LoginCubit extends Cubit<LoginState> {
       await FirebaseAuth.instance.signInWithCredential(credential);
       UserModel? user;
       if (googleUser != null) {
-        user = UserModel(email: googleUser.email, id: googleUser.id);
+        user = UserModel(
+          email: googleUser.email,
+          id: googleUser.id,
+          displayName: googleUser.displayName,
+          photoUrl: googleUser.photoUrl,
+        );
       }
+      emit(LoginSuccess(data: user));
     } catch (e, s) {
+      print(e.toString());
       print(s.toString());
+      emit(LoginError(errorMessage: "Google Sign In Failed"));
     }
   }
 }
