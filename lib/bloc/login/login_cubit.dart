@@ -10,7 +10,6 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
   signInWithGoogle() async {
-    print('Hi');
     emit(LoginLoading(message: "Loading"));
     try {
       final googleSignIn = await GoogleSignIn().signOut();

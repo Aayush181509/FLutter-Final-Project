@@ -21,6 +21,6 @@ class LoginError extends LoginState {
 }
 
 class LoginSuccess extends LoginState {
-  final dynamic data;
+  final UserModel? data;
   LoginSuccess({required this.data});
 }

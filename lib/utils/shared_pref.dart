@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPref {
   static const USER_KEY = "user";
   static saveUserData(UserModel user) async {
+    // print('Save User Data');
     final instancee = await SharedPreferences.getInstance();
     final userStringJson = user.toJson();
     final userString = json.encode(userStringJson);
@@ -17,8 +18,11 @@ class SharedPref {
     if (userString == null) {
       return null;
     }
+
     final decodeUser = json.decode(userString);
+
     final UserModel user = UserModel.fromJson(decodeUser);
+
     return user;
   }
 }
