@@ -1,4 +1,6 @@
 import 'package:final_app/bloc/login/login_cubit.dart';
+import 'package:final_app/utils/assets.dart';
+import 'package:final_app/utils/shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -24,19 +26,21 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
     // final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text('Login'),
-        leading: Icon(Icons.home),
-        centerTitle: true,
-        backgroundColor: Colors.green[500],
-        shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        actions: [
-          Icon(Icons.list_sharp),
-          SizedBox(
-            width: 25,
-          )
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Text('Login'),
+      //   leading: Icon(Icons.home),
+      //   centerTitle: true,
+      //   backgroundColor: Colors.transparent,
+      //   foregroundColor: Colors.black87,
+      //   elevation: 0,
+      //   shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      //   actions: [
+      //     Icon(Icons.list_sharp),
+      //     SizedBox(
+      //       width: 25,
+      //     )
+      //   ],
+      // ),
       body: BlocListener(
         bloc: logincubit,
         listener: (context, state) {
@@ -44,6 +48,7 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
           } else if (state is LoginError) {
             Fluttertoast.showToast(msg: state.errorMessage);
           } else if (state is LoginSuccess) {
+            print(SharedPref.getUserData());
             Fluttertoast.showToast(msg: "Login Success! Welcome");
           }
         },
@@ -54,6 +59,9 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
               hasScrollBody: false,
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 90,
+                  ),
                   // if (!isKeyboard)
                   Container(
                     height: 150.0,
@@ -63,7 +71,7 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
                       borderRadius: BorderRadius.circular(200),
                     ),
                     child: Center(
-                      child: Image.asset('assets/images/google.png'),
+                      child: Image.asset(Assets.tiktokImage),
                     ),
                   ),
                   SizedBox(
@@ -76,7 +84,9 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
                         print('Hiiiii');
                       },
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         labelText: 'User Name',
                         hintText: 'Enter valid email id as a@mail.com',
                       ),
@@ -87,7 +97,9 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         labelText: 'Password',
                         hintText: 'Enter your password',
                       ),
@@ -143,7 +155,7 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
                           child: Row(
                             children: [
                               Image.asset(
-                                'assets/images/google.png',
+                                Assets.googleImage,
                                 height: 30,
                                 width: 30,
                               ),
@@ -168,7 +180,7 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
                         child: Row(
                           children: [
                             Image.asset(
-                              'assets/images/facebook.png',
+                              Assets.facebookImage,
                               height: 30,
                               width: 30,
                             ),
