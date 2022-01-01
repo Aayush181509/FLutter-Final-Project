@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             ),
       ),
       onGenerateRoute: ourRouteGenerator,
-      initialRoute: Routes.tiktokUiScreen,
+      initialRoute: Routes.splashScreenPage,
     );
   }
 }

@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final isLoggedIn = await SharedPref.getUserData();
     if (isLoggedIn != null) {
       await Future.delayed(Duration(seconds: 3), () {
-        Navigator.pushNamed(context, Routes.splashScreenPage);
+        Navigator.pushNamed(context, Routes.tiktokUiScreen);
       });
     } else {
       await Future.delayed(Duration(seconds: 2), () {
