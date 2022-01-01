@@ -1,5 +1,6 @@
 import 'package:final_app/bloc/login/login_cubit.dart';
 import 'package:final_app/models/user_model.dart';
+import 'package:final_app/navigation/routes.dart';
 import 'package:final_app/utils/assets.dart';
 import 'package:final_app/utils/shared_pref.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,7 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
             Fluttertoast.showToast(msg: state.errorMessage);
           } else if (state is LoginSuccess) {
             Fluttertoast.showToast(msg: "Login Success! Welcome");
+            Navigator.pushNamed(context, Routes.splashScreenPage);
           }
         },
         child: CustomScrollView(
