@@ -34,17 +34,25 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  # Animation
   simple_animations: ^4.0.1
+  #Flutter bloc implementation
   flutter_bloc: ^8.0.1 
   bloc: ^8.0.2
   equatable: ^2.0.3
+  #Google and firebase 
   google_sign_in: ^5.2.1
   firebase_auth: ^3.3.4
   firebase_core: ^1.10.6
+  #For toast messages
   fluttertoast: ^8.0.8
+  #For data persistence
   shared_preferences: ^2.0.11
   cached_network_image: ^3.2.0
+  #For web data access
   dio: ^4.0.4
+  #For running video player
+  video_player: ^2.2.10
 
 dev_dependencies:
   flutter_test:

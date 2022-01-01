@@ -22,7 +22,7 @@ class VideosError extends VideosState {
 }
 
 class VideosSuccess extends VideosState {
-  final List<VideoData> data;
+  final List<VideoHit> data;
   final String? successMessage;
   VideosSuccess({required this.data, this.successMessage});
   List<Object> get props => [data];

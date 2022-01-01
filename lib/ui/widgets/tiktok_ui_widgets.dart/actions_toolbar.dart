@@ -1,8 +1,10 @@
+import 'package:final_app/models/video_model/video_hit.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ActionsToolbar extends StatelessWidget {
-  const ActionsToolbar({Key? key}) : super(key: key);
+  const ActionsToolbar({Key? key, required this.video}) : super(key: key);
+  final VideoHit video;
   // Full dimensions of an action
   static const double ActionWidgetSize = 60.0;
 
@@ -126,9 +128,11 @@ class ActionsToolbar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _getFollowAction(),
-          _getSocialAction(title: '3.2k', icon: Icons.favorite),
-          _getSocialAction(title: '58', icon: Icons.chat_rounded),
-          _getSocialAction(title: 'Share', icon: Icons.share, isShare: true),
+          _getSocialAction(title: video.likes.toString(), icon: Icons.favorite),
+          _getSocialAction(
+              title: video.comments.toString(), icon: Icons.chat_rounded),
+          _getSocialAction(
+              title: video.views.toString(), icon: Icons.share, isShare: true),
           _getMusicPlayerAction(),
         ],
       ),

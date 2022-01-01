@@ -18,10 +18,10 @@ Route ourRouteGenerator(RouteSettings setting) {
       return MaterialPageRoute(
         builder: (context) => SplashScreen(),
       );
-    case Routes.tiktokUiScreen:
-      return MaterialPageRoute(
-        builder: (context) => TiktokUiScreen(),
-      );
+    // case Routes.tiktokUiScreen:
+    //   return MaterialPageRoute(
+    //     builder: (context) => TiktokUiScreen(),
+    //   );
     case Routes.testingScreen:
       return MaterialPageRoute(
         builder: (context) => TestingWidget(),

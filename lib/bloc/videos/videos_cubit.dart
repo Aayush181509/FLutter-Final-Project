@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:final_app/models/video_model/video_data.dart';
+import 'package:final_app/models/video_model/video_hit.dart';
 part 'videos_state.dart';
 
 class VideosCubit extends Cubit<VideosState> {
@@ -16,14 +17,15 @@ class VideosCubit extends Cubit<VideosState> {
       final result = await Dio().get(url);
       print('This is our data from server');
       print(result.statusCode);
-      var videos = (result.data['hits'] as List).map<VideoData>((item) {
-        VideoData nVideos = VideoData.fromJson(item);
+      print(result.data);
+      var videos = (result.data['hits'] as List).map<VideoHit>((item) {
+        VideoHit nVideos = VideoHit.fromJson(item);
         return nVideos;
       }).toList();
       if (videos.isEmpty) {
         emit(VideosError(errorMessage: 'Sorry Posts could be loaded'));
       } else {
-        emit(VideosSuccess(data: videos));
+        emit(VideosSuccess(data: videos, successMessage: 'SUccessss'));
       }
     } catch (e, s) {
       print(e.toString());

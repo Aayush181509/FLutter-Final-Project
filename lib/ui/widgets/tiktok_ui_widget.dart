@@ -1,11 +1,12 @@
+import 'package:final_app/models/video_model/video_hit.dart';
 import 'package:final_app/ui/widgets/tiktok_ui_widgets.dart/actions_toolbar.dart';
 import 'package:final_app/ui/widgets/tiktok_ui_widgets.dart/buttom_toolbar.dart';
 import 'package:final_app/ui/widgets/tiktok_ui_widgets.dart/video_description.dart';
 import 'package:flutter/material.dart';
 
 class TiktokUiWidget extends StatelessWidget {
-  const TiktokUiWidget({Key? key}) : super(key: key);
-
+  const TiktokUiWidget({Key? key, required this.video}) : super(key: key);
+  final VideoHit video;
   Widget get topSection => Container(
         height: 100.0,
         padding: EdgeInsets.only(bottom: 15.0),
@@ -27,7 +28,9 @@ class TiktokUiWidget extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(
-                  'https://images.unsplash.com/photo-1568651872875-2b0352849bf6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2ltcGxlJTIwZGVzaWdufGVufDB8fDB8fA%3D%3D&w=1000&q=80'),
+                video.userImageURL,
+              ),
+              // 'https://images.unsplash.com/photo-1568651872875-2b0352849bf6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2ltcGxlJTIwZGVzaWdufGVufDB8fDB8fA%3D%3D&w=1000&q=80'),
               fit: BoxFit.cover,
             ),
           ),
@@ -35,8 +38,8 @@ class TiktokUiWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              VideoDescription(),
-              ActionsToolbar(),
+              VideoDescription(video: video),
+              ActionsToolbar(video: video),
             ],
           ),
         ),

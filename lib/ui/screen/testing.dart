@@ -1,4 +1,9 @@
+import 'dart:math';
+
 import 'package:final_app/bloc/videos/videos_cubit.dart';
+import 'package:final_app/ui/screen/tiktok_ui_screen.dart';
+import 'package:final_app/ui/screen/video_player_test.dart';
+import 'package:final_app/ui/widgets/tiktok_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +15,7 @@ class TestingWidget extends StatefulWidget {
 }
 
 class _TestingWidgetState extends State<TestingWidget> {
+  PageController pageController = PageController();
   VideosCubit n = VideosCubit();
   @override
   void initState() {
@@ -26,8 +32,7 @@ class _TestingWidgetState extends State<TestingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: BlocConsumer<VideosCubit, VideosState>(
+    return BlocConsumer<VideosCubit, VideosState>(
       bloc: n,
       listener: (context, state) {
         setState(() {});
@@ -38,15 +43,26 @@ class _TestingWidgetState extends State<TestingWidget> {
           return Center(child: CircularProgressIndicator());
         }
         if (state is VideosError) {
+          print(state.errorMessage);
           return Text(state.errorMessage);
         }
         if (state is VideosSuccess) {
-          print(state.data.length);
-          print(state.data[0].totalHits);
-          return Center(child: Text('Successfully fetched'));
+          return PageView.builder(
+            controller: pageController,
+            scrollDirection: Axis.vertical,
+            itemCount: state.data.length,
+            itemBuilder: (context, index) {
+              final _currentPost = state.data[index];
+              print(index.toString());
+              print(_currentPost.videos.small.url);
+              // return TiktokUiWidget(video: _currentPost);
+              return VideoApp(video: _currentPost);
+            },
+          );
+        } else {
+          return Container();
         }
-        return Container();
       },
-    ));
+    );
   }
 }
