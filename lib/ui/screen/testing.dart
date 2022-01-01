@@ -55,8 +55,8 @@ class _TestingWidgetState extends State<TestingWidget> {
               final _currentPost = state.data[index];
               print(index.toString());
               print(_currentPost.videos.small.url);
-              // return TiktokUiWidget(video: _currentPost);
-              return VideoApp(video: _currentPost);
+              return TiktokUiWidget(video: _currentPost);
+              // return VideoApp(video: _currentPost);
             },
           );
         } else {

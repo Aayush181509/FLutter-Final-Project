@@ -1,4 +1,5 @@
 import 'package:final_app/models/video_model/video_hit.dart';
+import 'package:final_app/ui/screen/video_player_test.dart';
 import 'package:final_app/ui/widgets/tiktok_ui_widgets.dart/actions_toolbar.dart';
 import 'package:final_app/ui/widgets/tiktok_ui_widgets.dart/buttom_toolbar.dart';
 import 'package:final_app/ui/widgets/tiktok_ui_widgets.dart/video_description.dart';
@@ -23,25 +24,21 @@ class TiktokUiWidget extends StatelessWidget {
                   style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold))
             ]),
       );
-  Widget get middleSection => Expanded(
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                video.userImageURL,
-              ),
-              // 'https://images.unsplash.com/photo-1568651872875-2b0352849bf6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2ltcGxlJTIwZGVzaWdufGVufDB8fDB8fA%3D%3D&w=1000&q=80'),
-              fit: BoxFit.cover,
+  Widget get middleSection => Container(
+        child: Stack(
+          children: [
+            VideoApp(video: video),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: VideoDescription(video: video),
             ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              VideoDescription(video: video),
-              ActionsToolbar(video: video),
-            ],
-          ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: ActionsToolbar(video: video),
+            ),
+          ],
         ),
       );
   @override
@@ -51,7 +48,7 @@ class TiktokUiWidget extends StatelessWidget {
       body: Column(
         children: <Widget>[
           topSection,
-          middleSection,
+          Expanded(child: middleSection),
           ButtomToolbar(),
         ],
       ),

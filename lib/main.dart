@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             ),
       ),
       onGenerateRoute: ourRouteGenerator,
-      initialRoute: Routes.testingScreen,
+      initialRoute: Routes.splashScreenPage,
     );
   }
 }

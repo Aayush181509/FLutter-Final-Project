@@ -51,7 +51,7 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
             Fluttertoast.showToast(msg: state.errorMessage);
           } else if (state is LoginSuccess) {
             Fluttertoast.showToast(msg: "Login Success! Welcome");
-            Navigator.pushNamed(context, Routes.tiktokUiScreen);
+            Navigator.pushNamed(context, Routes.testingScreen);
           }
         },
         child: CustomScrollView(

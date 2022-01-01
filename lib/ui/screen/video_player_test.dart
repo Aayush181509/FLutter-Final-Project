@@ -13,17 +13,16 @@ class VideoApp extends StatefulWidget {
 
 class _VideoAppState extends State<VideoApp> {
   late VideoPlayerController _controller;
-
   @override
   void initState() {
-    super.initState();
     _controller = VideoPlayerController.network(
-        // 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'
-        widget.video.videos.medium.url)
+        // 'https://player.vimeo.com/external/328940142.hd.mp4?s=1ea57040d1487a6c9d9ca9ca65763c8972e66bd4&profile_id=172'
+        widget.video.videos.large.url)
       ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
+        _controller.play();
       });
+    super.initState();
   }
 
   @override
@@ -31,24 +30,18 @@ class _VideoAppState extends State<VideoApp> {
     return MaterialApp(
       title: 'Video Demo',
       home: Scaffold(
-        body: Center(
-          child: _controller.value.isInitialized
-              ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                )
-              : Container(),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
+        body: InkWell(
+          onTap: () {
             setState(() {
               _controller.value.isPlaying
                   ? _controller.pause()
                   : _controller.play();
             });
           },
-          child: Icon(
-            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+          child: Center(
+            child: _controller.value.isInitialized
+                ? VideoPlayer(_controller)
+                : Container(),
           ),
         ),
       ),

@@ -38,16 +38,20 @@ class ButtomToolbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Icon(Icons.home, color: Colors.white, size: NavigationIconSize),
-          Icon(Icons.search, color: Colors.white, size: NavigationIconSize),
-          customCreateIcon,
-          Icon(Icons.message_sharp,
-              color: Colors.white, size: NavigationIconSize),
-          Icon(Icons.person_pin, color: Colors.white, size: NavigationIconSize)
-        ],
+      child: Container(
+        margin: EdgeInsets.only(top: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(Icons.home, color: Colors.white, size: NavigationIconSize),
+            Icon(Icons.search, color: Colors.white, size: NavigationIconSize),
+            customCreateIcon,
+            Icon(Icons.message_sharp,
+                color: Colors.white, size: NavigationIconSize),
+            Icon(Icons.person_pin,
+                color: Colors.white, size: NavigationIconSize)
+          ],
+        ),
       ),
     );
   }
