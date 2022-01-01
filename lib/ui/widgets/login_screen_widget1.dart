@@ -1,5 +1,5 @@
 import 'package:final_app/bloc/login/login_cubit.dart';
-import 'package:final_app/models/user_model.dart';
+import 'package:final_app/models/login_model/user_model.dart';
 import 'package:final_app/navigation/routes.dart';
 import 'package:final_app/utils/assets.dart';
 import 'package:final_app/utils/shared_pref.dart';

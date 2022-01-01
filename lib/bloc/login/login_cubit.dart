@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:final_app/models/user_model.dart';
+import 'package:final_app/models/login_model/user_model.dart';
 import 'package:final_app/utils/shared_pref.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:final_app/models/user_model.dart';
+import 'package:final_app/models/login_model/user_model.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

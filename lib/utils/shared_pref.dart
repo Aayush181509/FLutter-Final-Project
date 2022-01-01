@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:final_app/models/user_model.dart';
+import 'package:final_app/models/login_model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
