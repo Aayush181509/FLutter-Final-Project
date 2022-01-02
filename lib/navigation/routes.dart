@@ -3,4 +3,5 @@ class Routes {
   static const splashScreenPage = "/splashScreen";
   static const tiktokUiScreen = "/tiktokUiScreen";
   static const testingScreen = "/testingScreen";
+  static const userScreen = "/userScreen";
 }

@@ -5,6 +5,7 @@ import 'package:final_app/ui/screen/login_screen.dart';
 import 'package:final_app/ui/screen/splash_screen.dart';
 import 'package:final_app/ui/screen/testing.dart';
 import 'package:final_app/ui/screen/tiktok_ui_screen.dart';
+import 'package:final_app/ui/screen/user_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,10 +19,10 @@ Route ourRouteGenerator(RouteSettings setting) {
       return MaterialPageRoute(
         builder: (context) => SplashScreen(),
       );
-    // case Routes.tiktokUiScreen:
-    //   return MaterialPageRoute(
-    //     builder: (context) => TiktokUiScreen(),
-    //   );
+    case Routes.userScreen:
+      return MaterialPageRoute(
+        builder: (context) => UserPage(),
+      );
     case Routes.testingScreen:
       return MaterialPageRoute(
         builder: (context) => TestingWidget(),
