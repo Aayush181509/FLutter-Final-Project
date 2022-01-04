@@ -25,4 +25,9 @@ class SharedPref {
 
     return user;
   }
+
+  static clearUserData(bool clear) async {
+    final instancee = await SharedPreferences.getInstance();
+    instancee.clear();
+  }
 }

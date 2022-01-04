@@ -21,7 +21,7 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
     super.initState();
   }
 
-  LoginCubit logincubit = LoginCubit();
+  static LoginCubit logincubit = LoginCubit();
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class _LoginScreenWidget1State extends State<LoginScreenWidget1> {
                     padding: EdgeInsets.all(10),
                     child: TextField(
                       onTap: () {
-                        print('Hiiiii');
+                        // do nothing on purpose
                       },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(

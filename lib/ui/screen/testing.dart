@@ -68,7 +68,6 @@ class _TestingWidgetState extends State<TestingWidget> {
                     },
                   ),
                 ),
-                ButtomToolbar(),
               ],
             );
           } else {
@@ -76,6 +75,7 @@ class _TestingWidgetState extends State<TestingWidget> {
           }
         },
       ),
+      bottomNavigationBar: ButtomToolbar(),
     );
   }
 }

@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:final_app/models/login_model/user_model.dart';
+import 'package:final_app/ui/widgets/tiktok_ui_widgets.dart/buttom_toolbar.dart';
+import 'package:final_app/utils/shared_pref.dart';
 import 'package:flutter/material.dart';
 
-class UserPage extends StatelessWidget {
+class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
 
   static const double ActionWidgetSize = 80.0;
@@ -18,13 +21,18 @@ class UserPage extends StatelessWidget {
 // The size of the plus icon under the profile image in follow action
   static const double PlusIconSize = 20.0;
 
+  @override
+  State<UserPage> createState() => _UserPageState();
+}
+
+class _UserPageState extends State<UserPage> {
   Widget _getPlusIcon() {
     return Positioned(
       bottom: 0,
-      left: ((ActionWidgetSize / 2) - (PlusIconSize / 2)),
+      left: ((UserPage.ActionWidgetSize / 2) - (UserPage.PlusIconSize / 2)),
       child: Container(
-          width: PlusIconSize, // PlusIconSize = 20.0;
-          height: PlusIconSize, // PlusIconSize = 20.0;
+          width: UserPage.PlusIconSize, // PlusIconSize = 20.0;
+          height: UserPage.PlusIconSize, // PlusIconSize = 20.0;
           decoration: BoxDecoration(
               color: Color.fromARGB(255, 255, 43, 84),
               borderRadius: BorderRadius.circular(15.0)),
@@ -38,15 +46,16 @@ class UserPage extends StatelessWidget {
 
   Widget _getProfilePicture() {
     return Positioned(
-        left: (ActionWidgetSize / 2) - (ProfileImageSize / 2),
+        left: (UserPage.ActionWidgetSize / 2) - (UserPage.ProfileImageSize / 2),
         child: Container(
           padding:
               EdgeInsets.all(1.0), // Add 1.0 point padding to create border
-          height: ProfileImageSize, // ProfileImageSize = 50.0;
-          width: ProfileImageSize, // ProfileImageSize = 50.0;
+          height: UserPage.ProfileImageSize, // ProfileImageSize = 50.0;
+          width: UserPage.ProfileImageSize, // ProfileImageSize = 50.0;
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(ProfileImageSize / 2)),
+              borderRadius:
+                  BorderRadius.circular(UserPage.ProfileImageSize / 2)),
           // import 'package:cached_network_image/cached_network_image.dart'; at the top to use CachedNetworkImage
           child: CachedNetworkImage(
             imageUrl:
@@ -86,13 +95,24 @@ class UserPage extends StatelessWidget {
     );
   }
 
+  // late Future<UserModel?> user;
+  // void @override
+  late Future<UserModel?> user;
+  void initState() {
+    super.initState();
+    user = SharedPref.getUserData();
+    // user.toJson();
+    print(user);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         leading: Icon(Icons.person_add_alt_sharp),
         elevation: 0,
-        title: Text('Aayush_8131'),
+        title: Text(user.toString()),
         centerTitle: true,
         foregroundColor: Colors.black,
         backgroundColor: Colors.transparent,
@@ -112,15 +132,19 @@ class UserPage extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          Container(
-            alignment: Alignment.topCenter,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
+          Expanded(
+            child: Container(
+              alignment: Alignment.topCenter,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: _getFollowAction(),
             ),
-            child: _getFollowAction(),
           ),
+          // ButtomToolbar(),
         ],
       ),
+      bottomNavigationBar: ButtomToolbar(),
     );
   }
 }

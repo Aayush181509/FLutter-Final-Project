@@ -12,7 +12,7 @@ class LoginCubit extends Cubit<LoginState> {
   signInWithGoogle() async {
     emit(LoginLoading(message: "Loading"));
     try {
-      final googleSignIn = await GoogleSignIn().signOut();
+      // final googleSignIn = await GoogleSignIn().signOut();
 
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -43,6 +43,20 @@ class LoginCubit extends Cubit<LoginState> {
       print(e.toString());
       print(s.toString());
       emit(LoginError(errorMessage: "Google Sign In Failed"));
+    }
+  }
+
+  signOutFromGoogle() async {
+    // emit(LoginLoading(message: "Loading"));
+    try {
+      final googleSignIn = await GoogleSignIn().signOut();
+      await SharedPref.clearUserData(true);
+      emit(SignedOut(message: 'Signed Out Successfully'));
+      // emit(SignedOut(message: 'Signed Out Successfully'));
+    } catch (e, s) {
+      print(e.toString());
+      print(s.toString());
+      // emit(LoginError(errorMessage: s.toString()));
     }
   }
 }

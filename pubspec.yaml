@@ -44,6 +44,7 @@ dependencies:
   google_sign_in: ^5.2.1
   firebase_auth: ^3.3.4
   firebase_core: ^1.10.6
+  cloud_firestore: ^3.1.5
   #For toast messages
   fluttertoast: ^8.0.8
   #For data persistence
@@ -53,6 +54,8 @@ dependencies:
   dio: ^4.0.4
   #For running video player
   video_player: ^2.2.10
+  #To provide path in mobile
+  path_provider: ^2.0.8
 
 dev_dependencies:
   flutter_test:

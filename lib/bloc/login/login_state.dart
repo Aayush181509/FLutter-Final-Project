@@ -24,3 +24,8 @@ class LoginSuccess extends LoginState {
   final UserModel? data;
   LoginSuccess({required this.data});
 }
+
+class SignedOut extends LoginState {
+  final String message;
+  SignedOut({required this.message});
+}

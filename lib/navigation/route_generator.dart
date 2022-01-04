@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:final_app/navigation/routes.dart';
 import 'package:final_app/ui/screen/login_screen.dart';
+import 'package:final_app/ui/screen/setting_page.dart';
 import 'package:final_app/ui/screen/splash_screen.dart';
 import 'package:final_app/ui/screen/testing.dart';
 import 'package:final_app/ui/screen/tiktok_ui_screen.dart';
@@ -22,6 +23,10 @@ Route ourRouteGenerator(RouteSettings setting) {
     case Routes.userScreen:
       return MaterialPageRoute(
         builder: (context) => UserPage(),
+      );
+    case Routes.settingScreen:
+      return MaterialPageRoute(
+        builder: (context) => SettingsPage(),
       );
     case Routes.testingScreen:
       return MaterialPageRoute(
